@@ -19,6 +19,7 @@
     "@eslint/eslintrc": "^3",
     "@eslint/object-schema": "^2.1.6",
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -27,8 +28,10 @@
     "eslint": "^9.36.0",
     "eslint-config-love": "^130.0.0",
     "eslint-config-next": "15.5.4",
+    "eslint-plugin-tailwindcss": "^4.0.0-beta.0",
     "eslint-prettier": "^0.0.0-empty",
     "tailwindcss": "^4",
+    "ts-standard": "^12.0.2",
     "typescript": "^5"
   }
 }
