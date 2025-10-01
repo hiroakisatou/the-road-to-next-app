@@ -1,9 +1,4 @@
-export type Ticket = {
-  id: string;
-  title: string;
-  content: string;
-  status: 'OPEN' | 'DONE' | 'IN_PROGRESS';
-};
+import type { Ticket } from '@/futures/ticket/types';
 
 export const initialTickets: Ticket[] = [
   {

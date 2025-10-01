@@ -12,7 +12,7 @@ const Heading = ({ title, description }: HeadingProps) => {
         <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
         <p className="text-nomal, text-muted-foreground">{description}</p>
       </div>
-      <Separator className="border-b border-slate-300" />
+      <Separator className="border-b border-gray-300 dark:border-neutral-600" />
     </>
   );
 };

@@ -25,6 +25,13 @@
       "attributePosition": "auto"
     }
   },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
   "overrides": [
     {
       "formatter": {

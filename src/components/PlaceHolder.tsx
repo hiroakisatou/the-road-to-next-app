@@ -15,7 +15,7 @@ const PlaceHolder = ({
 }: PlaceHolderProps): React.ReactElement => {
   return (
     <div className="flex-1 self-center flex flex-col items-center justify-center gap-y-2">
-      <Icon size={64} area-hidden="true" className={className} />
+      <Icon size={64} aria-hidden="true" className={className} />
       <h2 className="text-lg text-center">{label}</h2>
       {button}
     </div>

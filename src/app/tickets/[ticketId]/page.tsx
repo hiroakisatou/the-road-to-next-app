@@ -2,7 +2,9 @@ import Link from 'next/link';
 import { Heading } from '@/components/Heading';
 import PlaceHolder from '@/components/PlaceHolder';
 import { Button } from '@/components/ui/button';
-import { initialTickets, type Ticket } from '@/data';
+import { initialTickets } from '@/data';
+import TicketItem from '@/futures/ticket/components/TicketItem';
+import type { Ticket } from '@/futures/ticket/types';
 
 type TicketPageProps = {
   params: Promise<{
@@ -33,9 +35,8 @@ export default async function TicketPage({ params }: TicketPageProps) {
         title="Ticket Page"
         description="Information about each ticket"
       />
-      <div>
-        <h3 className="text-2xl font-semibold">{ticket.title}</h3>
-        <p>{ticket.content}</p>
+      <div className="w-full flex flex-col items-center animate-fade-from-top">
+        <TicketItem ticket={ticket} isDetail={true} />
       </div>
     </div>
   );
