@@ -37,18 +37,26 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
         'max-w-[420px]': !isDetail,
       })}
     >
-      <Card key={ticket.id} className="flex-1 flex flex-col gap-y-2 bg-white dark:bg-neutral-700 border-gray-200 dark:border-neutral-600">
+      <Card
+        key={ticket.id}
+        className="flex-1 flex flex-col gap-y-2 bg-white dark:bg-neutral-700 border-gray-200 dark:border-neutral-600"
+      >
         <CardHeader>
           <CardTitle className="flex gap-x-2">
             <div className="w-6 h-6">{TICKET_ICONS[ticket.status]}</div>
-            <h2 className="text-2xl m-0 p-0 font-semibold dark:text-gray-100">{ticket.title}</h2>
+            <h2 className="text-2xl m-0 p-0 font-semibold dark:text-gray-100">
+              {ticket.title}
+            </h2>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <p
-            className={clsx('text-gray-600 dark:text-gray-300 whitespace-break-spaces', {
-              'line-clammp-3': !isDetail,
-            })}
+            className={clsx(
+              'text-gray-600 dark:text-gray-300 whitespace-break-spaces',
+              {
+                'line-clammp-3': !isDetail,
+              },
+            )}
           >
             {ticket.content}
           </p>
@@ -63,4 +71,4 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
     </div>
   );
 };
-export default TicketItem;
+export { TicketItem };

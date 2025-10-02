@@ -22,4 +22,4 @@ const PlaceHolder = ({
   );
 };
 
-export default PlaceHolder;
+export { PlaceHolder };
