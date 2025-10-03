@@ -43,7 +43,14 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
       >
         <CardHeader>
           <CardTitle className="flex gap-x-2">
-            <div className="w-6 h-6">{TICKET_ICONS[ticket.status]}</div>
+            <div
+              className="w-6 h-6"
+              role="img"
+              aria-label={`Status: ${ticket.status}`}
+              data-testid="status-icon"
+            >
+              {TICKET_ICONS[ticket.status]}
+            </div>
             <h2 className="text-2xl m-0 p-0 font-semibold dark:text-gray-100">
               {ticket.title}
             </h2>

@@ -1,10 +1,9 @@
 import { Suspense } from 'react';
 import { Heading } from '@/components/Heading';
-import TicketList from '@/futures/ticket/components/tiicket-list';
 import { Spinner } from '@/components/spiinner';
+import TicketList from '@/futures/ticket/components/tiicket-list';
 
-const  TicketsPage = async () =>   {
-
+const TicketsPage = async () => {
   return (
     <div className="flex-1 flex flex-col gap-8">
       <Heading
@@ -16,5 +15,5 @@ const  TicketsPage = async () =>   {
       </Suspense>
     </div>
   );
-}
+};
 export default TicketsPage;
