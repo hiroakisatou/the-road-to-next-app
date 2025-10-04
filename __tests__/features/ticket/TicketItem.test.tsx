@@ -32,8 +32,30 @@ describe('TicketItem', () => {
     expect(statusIcon).toHaveAttribute('role', 'img');
   });
 
-  it('should have accessible edit button in tickets page', () => {
+  it('should have accessible detail button in tickets page', () => {
     render(<TicketItem ticket={mockTicket} isDetail={false} />);
-    expect(screen.getByText('Edit')).toBeInTheDocument();
+    expect(screen.getByText('Detail')).toBeInTheDocument();
+  });
+
+  it('should have accessible delete button in tickets page', () => {
+    render(<TicketItem ticket={mockTicket} isDetail={true} />);
+    expect(screen.getByText('Delete')).toBeInTheDocument();
+  });
+
+  it('shoud render delete form with correct action', () => {
+    render(<TicketItem ticket={mockTicket} isDetail={true} />);
+
+    const deleteButton = screen.getByText('Delete');
+    const form = deleteButton.closest('form');
+
+    expect(form).toBeInTheDocument();
+    expect(form).toHaveAttribute('action');
+  });
+
+  it('should have delete button with correct type', () => {
+    render(<TicketItem ticket={mockTicket} isDetail={true} />);
+
+    const deleteButton = screen.getByText('Delete');
+    expect(deleteButton.closest('button')).toHaveAttribute('type', 'submit');
   });
 });

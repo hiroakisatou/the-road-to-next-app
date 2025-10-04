@@ -1,6 +1,12 @@
 import { getTicket } from '@/futures/queries/get-ticket';
+import { prisma } from '@/lib/prisma';
 
-const ticketId = 'cmg9sxq2b0000m0mfmendzt5e';
+let ticketId: string;
+
+beforeEach(async () => {
+  const firstTicket = await prisma.ticket.findFirst();
+  ticketId = firstTicket?.id ?? '';
+});
 
 describe('getTicket', () => {
   it('should return a ticket when found', async () => {

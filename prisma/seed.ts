@@ -24,7 +24,7 @@ const seed = async () => {
   console.log('DB Seed: Startefd ...');
   await prisma.ticket.deleteMany();
 
-  const promises = tickets.map((ticket) =>
+  const promises = tickets.sort((a, b) => a.title.localeCompare(b.title)).map((ticket) =>
     prisma.ticket.create({
       data: ticket,
     })
