@@ -47,15 +47,10 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
   );
 
   return (
-    <div
-      className={clsx('w-full flex gap-x-1', {
-        'max-w-[580px]': isDetail,
-        'max-w-[420px]': !isDetail,
-      })}
-    >
+    <div className='w-full flex gap-x-1 max-w-[420px] md:max-w-[580px]'>
       <Card
         key={ticket.id}
-        className="flex-1 flex flex-col gap-y-2 bg-white dark:bg-neutral-700 border-gray-200 dark:border-neutral-600"
+        className="flex-1 flex flex-col gap-y-2 bg-neutral-50 dark:bg-neutral-700 border-neutral-200 dark:border-neutral-600"
       >
         <CardHeader>
           <CardTitle className="flex-1 flex gap-x-2 justify-between">

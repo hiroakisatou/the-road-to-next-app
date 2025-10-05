@@ -5,4 +5,6 @@ export interface Ticket {
   title: string;
   content: string;
   status: TicketState;
+  createdAt: Date;
+  updatedAt: Date;
 }

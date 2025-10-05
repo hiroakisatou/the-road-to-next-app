@@ -16,8 +16,8 @@ datasource db {
 
 model Ticket {
   id        String   @id @default(cuid())
-  createAt  DateTime @default(now())
-  updateAt  DateTime @updatedAt
+  createdAt  DateTime @default(now()) @map("createAt")
+  updatedAt  DateTime @updatedAt @map("updateAt")
   title     String
   content   String   @db.VarChar(1024)
   status    TicketStatus   @default(OPEN)

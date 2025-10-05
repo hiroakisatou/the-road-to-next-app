@@ -24,7 +24,7 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-x-2">
       <ThemeSwicher />
-      <Button asChild variant="default" className="bg-yellow-500 dark:bg-yellow-600">
+      <Button asChild variant="default" className="bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:active:bg-yellow-700">
         <Link className="text-gray-800 dark:text-gray-900" href={ticketsPath}>
           Tickets
         </Link>
