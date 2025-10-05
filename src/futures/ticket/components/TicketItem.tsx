@@ -1,6 +1,7 @@
 import {
+  faCircleInfo,
   faEraser,
-  faPenToSquare,
+  faMoneyCheckPen,
 } from '@awesome.me/kit-6fc71ec626/icons/classic/regular';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
@@ -8,7 +9,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { deleteTicket } from '@/futures/actions/delete-ticket';
-import { ticketPath } from '@/path';
+import { ticketPath, updateTicketPath } from '@/path';
 import type { Ticket } from '../types';
 import TICKET_ICONS from './TicketIcons';
 
@@ -17,9 +18,7 @@ type IticketItemProps = {
   isDetail: boolean;
 };
 
-
 const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
-
   const DeleteButton = (
     <form action={deleteTicket.bind(null, ticket.id)}>
       <Button
@@ -35,22 +34,41 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
     </form>
   );
 
+  const EditButton = (
+    <Button
+      asChild
+      variant="outline"
+      className="px-2 py-1 bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:active:bg-yellow-700 text-neutral-900 dark:text-neutral-900 rounded-md"
+    >
+      <Link prefetch={true} href={updateTicketPath(ticket.id)}>
+        <div className="flex gap-x-1 items-center">
+          <FontAwesomeIcon icon={faMoneyCheckPen} className="w-4 h-4" />
+          <div className="text-gray-900 dark:text-gray-50">Edit</div>
+        </div>
+      </Link>
+    </Button>
+  );
+
   const DetailButton = (
-    <Button asChild variant="outline" className="px-2 py-1hover:text-gray-800 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-neutral-600 active:bg-gray-300 dark:active:bg-neutral-500 rounded-md">
-          <Link prefetch={true} href={ticketPath(ticket.id)}>
-          <div className="flex gap-x-1 items-center">
-          <FontAwesomeIcon icon={faPenToSquare} className="w-4 h-4" />
-          <div className="text-gray-600 dark:text-gray-300">Detail</div>
-          </div>
+    <Button
+      asChild
+      variant="outline"
+      className="px-2 py-1 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-900/50 active:bg-gray-200 dark:active:bg-gray-900/10 rounded-md"
+    >
+      <Link prefetch={true} href={ticketPath(ticket.id)}>
+        <div className="flex gap-x-1 items-center">
+          <FontAwesomeIcon icon={faCircleInfo} className="w-4 h-4" />
+          <div className="text-gray-900 dark:text-gray-50">Detail</div>
+        </div>
       </Link>
     </Button>
   );
 
   return (
-    <div className='w-full flex gap-x-1 max-w-[420px] md:max-w-[580px]'>
+    <div className="w-full flex gap-x-1 max-w-[420px] md:max-w-[580px]">
       <Card
         key={ticket.id}
-        className="flex-1 flex flex-col gap-y-2 bg-neutral-50 dark:bg-neutral-700 border-neutral-200 dark:border-neutral-600"
+        className="flex-1 flex flex-col gap-y-2 bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700"
       >
         <CardHeader>
           <CardTitle className="flex-1 flex gap-x-2 justify-between">
@@ -67,8 +85,6 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
                 {ticket.title}
               </h2>
             </div>
-
-            <div>{isDetail ? DeleteButton : DetailButton}</div>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -84,6 +100,20 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
           </p>
         </CardContent>
       </Card>
+
+      <div className="flex flex-col gap-y-1">
+        {isDetail ? (
+          <>
+            {EditButton}
+            {DeleteButton}
+          </>
+        ) : (
+          <>
+            {DetailButton}
+            {EditButton}
+          </>
+        )}
+      </div>
     </div>
   );
 };

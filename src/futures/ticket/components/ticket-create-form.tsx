@@ -23,7 +23,7 @@ const TicketCreateForm = () => {
         id={titleId}
         name="title"
         type="text"
-          className="text-neutral-900 bg-neutral-100/70 dark:bg-neutral-700/70 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
+          className="text-neutral-900 bg-neutral-100/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
       />
       </div>
       <div className="flex flex-col gap-y-2">
@@ -33,7 +33,7 @@ const TicketCreateForm = () => {
       <Textarea
         id={contentId}
         name="content"
-        className="text-neutral-900 bg-neutral-100/70 dark:bg-neutral-700/70 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
+        className="text-neutral-900 bg-neutral-100/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
       />
       </div>
       <Button
