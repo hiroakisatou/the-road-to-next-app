@@ -2,14 +2,17 @@ import type { Metadata } from 'next';
 
 import './globals.css';
 
-import localFont from 'next/font/local';
+import { Inter } from 'next/font/google';
 
 import type React from 'react';
 import Header from '@/components/Header';
 import ThemeProvider from '@/components/theme/theme-provider';
+import { Toaster } from '@/components/ui/sonner';
 
-const inter = localFont({
-  src: '../fonts/Inter-VariableFont_opsz,wght.ttf',
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -39,6 +42,7 @@ export default function RootLayout({
           >
             {children}
           </main>
+          <Toaster expand={true} />
         </ThemeProvider>
       </body>
     </html>

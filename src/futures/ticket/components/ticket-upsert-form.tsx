@@ -1,6 +1,6 @@
 'use client';
-
 import { useActionState, useId } from 'react';
+import { Form } from '@/components/form';
 import { FieldError } from '@/components/form/field-error';
 import { SubmitButton } from '@/components/form/submit-button';
 import { EMPTY_ACTION_STATE } from '@/components/form/utils/ts-action-state';
@@ -24,7 +24,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpdateFormProps) => {
   const contentId = useId();
 
   return (
-    <form action={action} className="flex flex-col gap-y-2">
+    <Form action={action} actionState={actionState}>
       <div className="flex flex-col gap-y-2">
         <Label htmlFor={titleId} className="text-neutral-900 dark:text-white">
           Title
@@ -36,7 +36,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpdateFormProps) => {
           }
           name="title"
           type="text"
-          className="text-neutral-900 bg-neutral-100/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
+          className="text-neutral-900 bg-neutral-200 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
         />
         <FieldError actionState={actionState} name="title" />
       </div>
@@ -50,14 +50,12 @@ const TicketUpsertForm = ({ ticket }: TicketUpdateFormProps) => {
             (actionState.payload?.get('content') as string) ?? ticket?.content
           }
           name="content"
-          className="text-neutral-900 bg-neutral-100/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
+          className="text-neutral-900 bg-neutral-200/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
         />
         <FieldError actionState={actionState} name="content" />
       </div>
       <SubmitButton label={ticket ? 'Edit' : 'Create'} />
-
-      {actionState.message}
-    </form>
+    </Form>
   );
 };
 

@@ -38,12 +38,14 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
     <Button
       asChild
       variant="outline"
-      className="px-2 py-1 bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:active:bg-yellow-700 text-neutral-900 dark:text-neutral-900 rounded-md"
+      className="px-2 py-1 bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 
+      dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:active:bg-yellow-700 
+      text-neutral-900 dark:border-neutral-50 border-neutral-900 rounded-md"
     >
       <Link prefetch={true} href={updateTicketPath(ticket.id)}>
         <div className="flex gap-x-1 items-center">
           <FontAwesomeIcon icon={faMoneyCheckPen} className="w-4 h-4" />
-          <div className="text-gray-900 dark:text-gray-50">Edit</div>
+          <div>Edit</div>
         </div>
       </Link>
     </Button>
