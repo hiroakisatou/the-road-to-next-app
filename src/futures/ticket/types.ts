@@ -7,4 +7,6 @@ export interface Ticket {
   status: TicketState;
   createdAt: Date;
   updatedAt: Date;
+  deadline: string;
+  boundly: number;
 }
