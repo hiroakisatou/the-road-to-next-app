@@ -53,18 +53,29 @@ const DatePicker = ({ id, defaultValue, name, ref }: DatePickerProps) => {
   const [open, setOpen] = useState(false);
 
   const handleSelect = (selectedDate: Date | undefined) => {
+    // console.log('=== handleSelect called ===');
+    // console.log('Current date state:', date);
+    // console.log('Selected date from Calendar:', selectedDate);
+
+    // react-day-pickerの仕様: 同じ日付を再選択するとundefinedが返される（選択解除）
+    if (selectedDate === undefined) {
+      console.log('Date selection cleared - reopening calendar');
+      setOpen(true); // カレンダーを再度開く
+      return;
+    }
+
     setDate(selectedDate);
     setOpen(false);
   };
 
   const formattedStringDate = date ? format(date, 'yyyy-MM-dd') : '';
+  console.log('formattedStringDate:', formattedStringDate);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger id={id} asChild>
         <Button
           variant="outline"
-          defaultValue={defaultValue}
           name={name}
           className="justify-start text-left font-normal border-neutral-200 dark:border-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-700"
         >
