@@ -1,5 +1,6 @@
 import {
   faCircleInfo,
+  faEllipsisVertical,
   faEraser,
   faMoneyCheckPen,
 } from '@awesome.me/kit-6fc71ec626/icons/classic/regular';
@@ -7,11 +8,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { deleteTicket } from '@/futures/actions/delete-ticket';
 import { ticketPath, updateTicketPath } from '@/path';
 import type { Ticket } from '../types';
-import TICKET_ICONS from './TicketIcons';
+import { TicketMoreMenu } from './ticket-more-menu';
+import { TICKET_ICONS } from './ticket-status';
 
 type IticketItemProps = {
   ticket: Ticket;
@@ -38,8 +46,8 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
     <Button
       asChild
       variant="outline"
-      className="px-2 py-1 bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 
-      dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:active:bg-yellow-700 
+      className="px-2 py-1 bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600
+      dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:active:bg-yellow-700
       text-neutral-900 dark:border-neutral-50 border-neutral-900 rounded-md"
     >
       <Link prefetch={true} href={updateTicketPath(ticket.id)}>
@@ -66,6 +74,17 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
     </Button>
   );
 
+  const moreMenu = (
+    <TicketMoreMenu
+      ticket={ticket}
+      trigger={
+        <Button className="flex gap-x-1 items-center bg-gray-100 hover:bg-gray-200 dark:bg-neutral-500 dark:hover:bg-neutral-600">
+          <FontAwesomeIcon icon={faEllipsisVertical} />
+          <div>Menu</div>
+        </Button>
+      }
+    />
+  );
   return (
     <div className="w-full flex gap-x-1 max-w-[420px] md:max-w-[580px]">
       <Card
@@ -112,11 +131,13 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
           <>
             {EditButton}
             {DeleteButton}
+            {moreMenu}
           </>
         ) : (
           <>
             {DetailButton}
             {EditButton}
+            {moreMenu}
           </>
         )}
       </div>

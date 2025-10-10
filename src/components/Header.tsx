@@ -14,21 +14,25 @@ const Header = () => {
           w-full flex py-2.5 px-5 justify-between"
     >
       <div className="flex items-center gap-x-2">
-      <Link
-        href={homePath}
-        className="text-[1.5rem] text-gray-900 dark:text-gray-100 font-bold flex items-center gap-4"
-      >
-        <Kanban />
-        <p>TicketBoundary</p>
-      </Link>
+        <Link
+          href={homePath}
+          className="text-[1.5rem] text-gray-900 dark:text-gray-100 font-bold flex items-center gap-4"
+        >
+          <Kanban />
+          <p>TicketBoundary</p>
+        </Link>
       </div>
       <div className="flex items-center gap-x-2">
-      <ThemeSwicher />
-      <Button asChild variant="default" className="bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:active:bg-yellow-700">
-        <Link className="text-gray-800 dark:text-gray-900" href={ticketsPath}>
-          Tickets
-        </Link>
-      </Button>
+        <ThemeSwicher />
+        <Button
+          asChild
+          variant="default"
+          className="bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:active:bg-yellow-700"
+        >
+          <Link className="text-gray-800 dark:text-gray-900" href={ticketsPath}>
+            Tickets
+          </Link>
+        </Button>
       </div>
     </nav>
   );

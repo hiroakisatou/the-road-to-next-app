@@ -13,4 +13,10 @@ const TICKET_ICONS: Record<TicketState, ReactElement> = {
   DONE: <FontAwesomeIcon icon={faCheck} />,
 };
 
-export default TICKET_ICONS;
+const TICKET_STATUS_LABELS = {
+  OPEN: 'Open',
+  IN_PROGRESS: 'In Progress',
+  DONE: 'Done',
+} as const;
+
+export { TICKET_ICONS, TICKET_STATUS_LABELS };
