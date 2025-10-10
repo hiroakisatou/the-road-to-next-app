@@ -1,6 +1,9 @@
 'use client';
-import { useActionState, useId } from 'react';
-import { DatePicker } from '@/components/date-picker';
+import { useActionState, useId, useRef } from 'react';
+import {
+  DatePicker,
+  type ImperativeHandleFormDatePicker,
+} from '@/components/date-picker';
 import { Form } from '@/components/form';
 import { FieldError } from '@/components/form/field-error';
 import { SubmitButton } from '@/components/form/submit-button';
@@ -21,13 +24,20 @@ const TicketUpsertForm = ({ ticket }: TicketUpdateFormProps) => {
     EMPTY_ACTION_STATE,
   );
 
+  const datePickerImperativeHandRef =
+    useRef<ImperativeHandleFormDatePicker>(null);
+
+  const handledSuccess = () => {
+    datePickerImperativeHandRef.current?.reset();
+  };
+
   const titleId = useId();
   const contentId = useId();
   const deadlineId = useId();
   const bountyId = useId();
 
   return (
-    <Form action={action} actionState={actionState}>
+    <Form action={action} actionState={actionState} onSuccess={handledSuccess}>
       <div className="flex flex-col gap-y-2">
         <Label htmlFor={titleId} className="text-neutral-900 dark:text-white">
           Title
@@ -75,6 +85,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpdateFormProps) => {
             className="text-neutral-900 bg-neutral-200/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
           /> */}
           <DatePicker
+            ref={datePickerImperativeHandRef}
             id={deadlineId}
             name="deadline"
             defaultValue={

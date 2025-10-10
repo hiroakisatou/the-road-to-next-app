@@ -1,0 +1,30 @@
+[
+  // Vimモードの切り替え
+  {
+    "key": "cmd+shift+v",
+    "command": "toggleVim",
+    "when": "editorTextFocus"
+  },
+
+  // 便利なキーバインド
+  {
+    "key": "cmd+shift+p",
+    "command": "workbench.action.showCommands",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // ファイル操作
+  {
+    "key": "cmd+s",
+    "command": "workbench.action.files.save",
+    "when": "editorTextFocus && vim.mode == 'Insert'"
+  },
+
+  // 検索
+  {
+    "key": "cmd+f",
+    "command": "actions.find",
+    "when": "editorTextFocus && vim.mode == 'Insert'"
+  }
+]
+

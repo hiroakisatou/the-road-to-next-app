@@ -1,41 +1,96 @@
 {
-  "reactSnippets.settings.importReactOnTop": false,
-  "reactSnippets.settings.typescript": true,
-  // Biomeをデフォルトフォーマッターとして設定
-  "editor.defaultFormatter": "biomejs.biome",
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.formatOnType": false,
-  // TypeScript/JavaScriptファイルでBiomeを使用
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": "explicit"
-    }
+  // VSCodeVim基本設定
+  "vim.disableExtension": false,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.leader": "<space>",
+  "vim.startInInsertMode": false,
+
+  // 検索設定
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+
+  // 表示設定
+  "vim.showcmd": true,
+  "vim.showmodename": true,
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.visual": "block",
+
+  // 便利な機能
+  "vim.easymotion": true,
+  "vim.surround": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.color": "rgba(250, 240, 170, 0.5)",
+  "vim.highlightedyank.duration": 200,
+
+  // EasyMotion設定
+  "vim.easymotionMarkerBackgroundColor": "#0000",
+  "vim.easymotionMarkerForegroundColorOneChar": "#ff0000",
+  "vim.easymotionMarkerForegroundColorTwoCharFirst": "#ffb400",
+  "vim.easymotionMarkerForegroundColorTwoCharSecond": "#b98300",
+  "vim.easymotionDimBackground": true,
+  "vim.easymotionDimColor": "#777777",
+
+  // ステータスバー色設定
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
+  "vim.statusBarColors.insert": "#BF616A",
+  "vim.statusBarColors.visual": "#B48EAD",
+  "vim.statusBarColors.visualline": "#B48EAD",
+  "vim.statusBarColors.visualblock": "#A3BE8C",
+  "vim.statusBarColors.replace": "#D08770",
+
+  // パフォーマンス最適化
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
   },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": "explicit"
+
+  // キーバインド設定
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
     }
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": "explicit"
+  ],
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
     }
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": "explicit"
+  ],
+
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
     }
-  },
-  // Biomeの設定
-  "biome.lspBin": null,
-  "biome.rename": true
+  ],
+
+  // キー処理設定
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-s>": false,
+    "<C-z>": false
+  }
 }

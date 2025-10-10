@@ -1,8 +1,21 @@
 'use client';
 
+/**
+ * DatePicker Component - React 19の新しいパターンを使用
+ *
+ * React 19の変更点:
+ * - refが通常のプロパティとして扱えるようになった
+ * - forwardRefを使わずに直接refを受け取れる
+ * - よりシンプルで直感的なAPI
+ *
+ * 参考: https://react.dev/reference/react/useImperativeHandle
+ * "Starting with React 19, ref is available as a prop. In React 18 and earlier,
+ * it was necessary to get the ref from forwardRef."
+ */
+
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useImperativeHandle, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import {
@@ -11,16 +24,31 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 
+export type ImperativeHandleFormDatePicker = {
+  reset: () => void;
+};
+
 type DatePickerProps = {
   id: string;
   defaultValue: string | undefined;
   name: string;
+  // React 19の新機能: refが通常のプロパティとして扱えるようになった
+  // 参考: https://react.dev/reference/react/useImperativeHandle
+  // "Starting with React 19, ref is available as a prop. In React 18 and earlier,
+  // it was necessary to get the ref from forwardRef."
+  ref?: React.Ref<ImperativeHandleFormDatePicker>;
 };
 
-const DatePicker = ({ id, defaultValue, name }: DatePickerProps) => {
+const DatePicker = ({ id, defaultValue, name, ref }: DatePickerProps) => {
   const [date, setDate] = useState<Date | undefined>(
     defaultValue ? new Date(defaultValue) : new Date(),
   );
+
+  useImperativeHandle(ref, () => ({
+    reset: () => {
+      setDate(new Date());
+    },
+  }));
 
   const [open, setOpen] = useState(false);
 
@@ -50,10 +78,13 @@ const DatePicker = ({ id, defaultValue, name }: DatePickerProps) => {
           mode="single"
           selected={date}
           onSelect={handleSelect}
-          initialFocus={true}
+          classNames={{
+            day: 'hover:bg-yellow-400 active:bg-yellow-500 dark:hover:bg-yellow-600 dark:active:bg-yellow-700',
+          }}
         />
       </PopoverContent>
     </Popover>
   );
 };
+
 export { DatePicker };
