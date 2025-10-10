@@ -8,5 +8,5 @@ export interface Ticket {
   createdAt: Date;
   updatedAt: Date;
   deadline: string;
-  boundly: number;
+  bounty: number;
 }

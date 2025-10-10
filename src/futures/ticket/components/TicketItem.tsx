@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { deleteTicket } from '@/futures/actions/delete-ticket';
 import { ticketPath, updateTicketPath } from '@/path';
 import type { Ticket } from '../types';
@@ -101,6 +101,10 @@ const TicketItem = ({ ticket, isDetail }: IticketItemProps) => {
             {ticket.content}
           </p>
         </CardContent>
+        <CardFooter className="flex gap-x-2">
+          <p className="text-smm text-muted-foreground">{ticket.deadline}</p>
+          <p className="text-smm text-muted-foreground">{ticket.bounty}</p>
+        </CardFooter>
       </Card>
 
       <div className="flex flex-col gap-y-1">

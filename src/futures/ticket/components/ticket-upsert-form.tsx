@@ -1,5 +1,6 @@
 'use client';
 import { useActionState, useId } from 'react';
+import { DatePicker } from '@/components/date-picker';
 import { Form } from '@/components/form';
 import { FieldError } from '@/components/form/field-error';
 import { SubmitButton } from '@/components/form/submit-button';
@@ -22,6 +23,8 @@ const TicketUpsertForm = ({ ticket }: TicketUpdateFormProps) => {
 
   const titleId = useId();
   const contentId = useId();
+  const deadlineId = useId();
+  const bountyId = useId();
 
   return (
     <Form action={action} actionState={actionState}>
@@ -53,6 +56,50 @@ const TicketUpsertForm = ({ ticket }: TicketUpdateFormProps) => {
           className="text-neutral-900 bg-neutral-200/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
         />
         <FieldError actionState={actionState} name="content" />
+      </div>
+      <div className="flex gap-x-2 mb-1">
+        <div className="w-1/2">
+          <Label
+            htmlFor={deadlineId}
+            className="text-neutral-900 dark:text-white"
+          >
+            Deadline
+          </Label>
+          {/* <Input
+            id={deadlineId}
+            defaultValue={
+              (actionState.payload?.get('deadline') as string) ?? ticket?.deadline
+            }
+            name="deadline"
+            type="date"
+            className="text-neutral-900 bg-neutral-200/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
+          /> */}
+          <DatePicker
+            id={deadlineId}
+            name="deadline"
+            defaultValue={
+              (actionState.payload?.get('deadline') as string) ??
+              ticket?.deadline
+            }
+          />
+        </div>
+        <div className="flex-1/2">
+          <Label
+            htmlFor={bountyId}
+            className="text-neutral-900 dark:text-white"
+          >
+            Bounty($)
+          </Label>
+          <Input
+            id={bountyId}
+            defaultValue={
+              (actionState.payload?.get('bounty') as string) ?? ticket?.bounty
+            }
+            name="bounty"
+            type="number"
+            className="text-neutral-900 bg-neutral-200/70 dark:bg-neutral-900/70 border-neutral-200 dark:border-neutral-700 dark:text-white focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/30"
+          />
+        </div>
       </div>
       <SubmitButton label={ticket ? 'Edit' : 'Create'} />
     </Form>

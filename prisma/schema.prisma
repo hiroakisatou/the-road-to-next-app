@@ -22,7 +22,7 @@ model Ticket {
   content   String   @db.VarChar(1024)
   status    TicketStatus   @default(OPEN)
   deadline  String   
-  boundly   Int      
+  bounty   Int      @map("boundly")
 }
 
 enum TicketStatus {
